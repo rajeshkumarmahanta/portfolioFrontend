@@ -1,0 +1,106 @@
+.img-ad-home{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    
+}
+/* magic card */
+.p-card{
+    border-radius: 25px;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.top-card{
+position: relative;
+}
+.rounded-img{
+    border-radius: 50%;
+}
+.username{
+    position: absolute;
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    transform: translate(-50%,-50%) rotate(-5deg) !important;
+  bottom: -8px;
+  left: 50%;
+    /* transform: rotate(-5deg); */
+}
+.music{
+    font-size: small;
+    border: 1px solid #e9e9e9;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.left{
+    color: #7b41f8a1;
+}
+.left-git{
+    color: #df47d5d4;
+}
+.github{
+    font-size: small;
+    border: 1px solid #e9e9e9;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 6px;
+    transform: rotate(-2deg);
+}
+.qr-card{
+    background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7);
+    border-radius: 25px;
+}
+.uname-qr{
+    border: 1px solid #d3d3d3;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    transform: rotate(4deg);
+}
+.qr-img{
+    mix-blend-mode: difference;
+}
+/* responsive */
+
+@media (max-width: 576px) {
+    /* CSS for small devices */
+  }
+  
+  /* Small devices (phones, landscape 576px - 768px) */
+  @media (min-width: 576px) and (max-width: 768px) {
+    /* CSS for small devices */
+  }
+  
+  /* Medium devices (tablets 768px - 992px) */
+  @media (min-width: 768px) and (max-width: 992px) {
+    /* CSS for medium devices */
+  }
+  
+  /* Large devices (desktops 992px - 1200px) */
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .p-card{
+        width: 75% !important;
+    }
+    .qr-card{
+        width: 75% !important;
+    }
+    
+  }
+  
+  /* Extra large devices (large desktops 1200px and above) */
+  @media (min-width: 1200px) {
+    .qr-card{
+        width: 56% !important;
+    }
+    .p-card{
+        width: 56% !important;
+    }
+  }
