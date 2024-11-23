@@ -5,25 +5,26 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 const apiUrl = import.meta.env.VITE_API_URL;
+import Loader from './Loader'
 const SingleBlog = () => {
     const {id} = useParams();
-    const[singleBlog,setSingleBlog] = useState(null);
+    const[singleBlog,setSingleBlog] = useState({});
+    const[loading,setLoading] = useState(true);
     const formattedDate = new Date(singleBlog.updatedAt).toDateString();
     useEffect(() => {
+
         axios.get(`${apiUrl}/blog/single/${id}`).then((res) => {
             setSingleBlog(res.data);
+            setLoading(false)
         }).catch((err) => {
           console.log(err)
         })
       }, []);
-
-    if(singleBlog){
-    return "loading..."
-    }else{
   return (
     <>
         <Nav/>
-        <Container className='my-5'>
+        {
+            loading ? <Loader/>  : <Container className='my-5'>
             <Row>
                 <Col md={12} sm={12} lg={12} className='col-12'>
                         <div className='s-blog-box  p-2 p-sm-4 p-md-5 p-lg-5'>
@@ -41,9 +42,11 @@ const SingleBlog = () => {
                 </Col>
             </Row>
         </Container>
+        }
+        
         <Footer/>
     </>
   )
-    }
 }
+
 export default SingleBlog
