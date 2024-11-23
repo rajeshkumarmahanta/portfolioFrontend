@@ -7,7 +7,7 @@ import axios from 'axios'
 const apiUrl = import.meta.env.VITE_API_URL;
 const SingleBlog = () => {
     const {id} = useParams();
-    const[singleBlog,setSingleBlog] = useState({});
+    const[singleBlog,setSingleBlog] = useState(null);
     const formattedDate = new Date(singleBlog.updatedAt).toDateString();
     useEffect(() => {
         axios.get(`${apiUrl}/blog/single/${id}`).then((res) => {
@@ -16,6 +16,10 @@ const SingleBlog = () => {
           console.log(err)
         })
       }, []);
+
+    if(singleBlog){
+    return "loading..."
+    }
   return (
     <>
         <Nav/>
