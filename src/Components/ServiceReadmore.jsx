@@ -5,13 +5,15 @@ import Nav from './Nav';
 import Footer from './Footer';
 import axios from 'axios';
 const apiUrl = import.meta.env.VITE_API_URL;
+import Loader from './Loader';
 const ServiceReadmore = () => {
   const[singleService,setSingleService]=useState({})
+  const[loading,setLoading] = useState(true);
     const {id} = useParams();
     useEffect(()=>{
-      axios.get(`${apiUrl}/singleservice/${id}`).then((res)=>{
+      axios.get(`${apiUrl}/service/single/${id}`).then((res)=>{
         setSingleService(res.data);
-        
+        setLoading(false)
       }).catch((err)=>{
         console.log(err);
       })
@@ -19,13 +21,16 @@ const ServiceReadmore = () => {
   return (
     <>
     <Nav/>
-    <Container className='my-5'>
+    {
+      loading ? <Loader/> :  <Container className='my-5'>
     <div>
     <h1 className='text-light'>{singleService.title}</h1>
     <p className='text-light'>{singleService.description}</p>
     <Button className='text-light'><Link to="/services" className='text-light link-light'>Go back</Link></Button>
     </div>
     </Container>
+    }
+   
        <Footer/>
     </>
   )
