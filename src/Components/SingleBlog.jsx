@@ -19,7 +19,7 @@ const SingleBlog = () => {
 
     if(singleBlog){
     return "loading..."
-    }
+    }else{
   return (
     <>
         <Nav/>
@@ -44,6 +44,6 @@ const SingleBlog = () => {
         <Footer/>
     </>
   )
+    }
 }
-
 export default SingleBlog
