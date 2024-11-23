@@ -5,20 +5,22 @@ import {Col, Container, Row} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Hireme from '../Components/Hireme'
 import axios from 'axios';
+import Loader from '../Components/Loader'
 const apiUrl = import.meta.env.VITE_API_URL;
 const Home = () => {
   const[homeData,setHomeData] = useState({});
   const[social,setSocial] = useState({});
   const[resume,setResume] = useState({});
+  const[loading,setLoading] = useState(true);
   useEffect(()=>{
     axios.get(`${apiUrl}/home`).then((res)=>{
       setHomeData(res.data);
+      setLoading(false);
     }).catch((err)=>{
       console.log(err);
     })
     axios.get(`${apiUrl}/socialmedia`).then((res)=>{
       setSocial(res.data);
-      console.log(res.data)
     }).catch((err)=>{
       console.log(err);
     })
@@ -32,8 +34,8 @@ const Home = () => {
   return (
     <>
      <Nav/>
-     
-        <Container className='my-5 py-2'>
+     {
+      loading ? <Loader/> : <Container className='my-5 py-2'>
           <Row>
             <Col md={7} className='col-12'>
               <div className='mt-3 pt-0 mt-md-1 mt-sm-1 mt-lg-5 pt-md-1 pt-sm-1 pt-lg-5'>
@@ -62,6 +64,8 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
+     }
+        
         <Hireme/>
         <Footer/>
 
