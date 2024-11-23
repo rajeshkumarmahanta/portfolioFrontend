@@ -101,10 +101,10 @@ const Nav = () => {
                 </Link>
               </li>
               <li className="nav-item text-center">
-                <Link
+                <a
                   className="nav-link text-light-blue nav-link-color-hover"
                   target="_blank"
-                  to="https://admin-portfolio-xi.vercel.app/admin">
+                  href="https://admin-portfolio-xi.vercel.app/admin">
                   <i className="ri-lock-fill"></i>
                 </Link>
               </li>
