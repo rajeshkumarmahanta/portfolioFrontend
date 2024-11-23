@@ -19,6 +19,7 @@ import lgAutoplay from 'lightgallery/plugins/autoplay';
 import lgVideo from 'lightgallery/plugins/video';
 import lgShare from 'lightgallery/plugins/share';
 import lgRotate from 'lightgallery/plugins/rotate';
+import Loader from '../Components/Loader'
 const apiUrl = import.meta.env.VITE_API_URL;
 const Gallery = () => {
     const [images, setImages] = useState([]);
@@ -32,7 +33,6 @@ const Gallery = () => {
           console.log(err)
         })
       },[]);
-      console.log(images)
   return (
     <>
          <Nav />
@@ -50,7 +50,7 @@ const Gallery = () => {
                     return <a href={`${apiUrl}/images/${item.image}`} key={i}>
                     <img alt={item.title} className='g-img m-2' src={`${apiUrl}/images/${item.image}`} />
                 </a>
-                }) : <h3 className='text-light'>No images added yet !</h3>
+                }) : <Loader/>
             }
                 
                 
