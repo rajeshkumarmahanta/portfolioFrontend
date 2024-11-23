@@ -4,6 +4,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import Footer from '../Components/Footer'
 import BlogDetails from '../Components/BlogDetails'
 import axios from 'axios'
+import Loader from '../Components/Loader'
 const apiUrl = import.meta.env.VITE_API_URL;
 const Blog = () => {
   const [blogs,setBlogs] = useState([]);
@@ -24,7 +25,7 @@ const Blog = () => {
         <ul className='custom-list'>
         {blogs.length >0 ? blogs.map((item,i)=>{
           return <li key={i}><BlogDetails item={item}/></li>
-        }) : "Loading..."
+        }) :  <Loader/>
          }
         </ul>
         </Col>
