@@ -104,7 +104,7 @@ const Nav = () => {
                 <Link
                   className="nav-link text-light-blue nav-link-color-hover"
                   target="_blank"
-                  to="/Admin">
+                  to="https://admin-portfolio-xi.vercel.app/admin">
                   <i className="ri-lock-fill"></i>
                 </Link>
               </li>
