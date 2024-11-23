@@ -4,12 +4,15 @@ import { Container,Row,Col } from 'react-bootstrap'
 import Footer from '../Components/Footer'
 import PortfolioDetails from '../Components/PortfolioDetails'
 import axios from 'axios'
+import Loader from '../Components/Loader'
 const apiUrl = import.meta.env.VITE_API_URL;
 const Portfolio = () => {
   const[portfolio,setPortfolio] = useState([]);
+  const[loading,setLoading] = useState(true);
   useEffect(()=>{
     axios.get(`${apiUrl}/project`).then((res)=>{
       setPortfolio(res.data);
+      setLoading(false);
     }).catch((err)=>{
       console.log(err)
     })
@@ -18,7 +21,8 @@ const Portfolio = () => {
   return (
     <>
     <Nav/>
-      <Container>
+    {
+      loading ? <Loader/> :  <Container>
       <Row>
         <Col md={12} sm={12} lg={12} className='col-12'>
         <h2 className='text-center text-light fw-bold mt-4'>Recent <span className='text-info'>Projects </span></h2>
@@ -33,6 +37,8 @@ const Portfolio = () => {
         </Col>
       </Row>
       </Container>
+    }
+     
       <Footer/>
     </>
   )
