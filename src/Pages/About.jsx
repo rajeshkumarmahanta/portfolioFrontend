@@ -3,10 +3,10 @@ import Nav from "../Components/Nav";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Skills from "../Components/Skills";
-import Loader from "../Components/Loader";
 import Education from "../Components/Education";
 import Footer from "../Components/Footer";
 import axios from "axios";
+import Loader from "../Components/Loader";
 const apiUrl = import.meta.env.VITE_API_URL;
 const About = () => {
   const [resume,setResume] = useState({})
@@ -17,6 +17,7 @@ const About = () => {
   const [LF,setLF] = useState({})
   const [other,setOther] = useState({})
   const [education,setEducation] = useState({})
+  const[loading,setLoading] = useState(true);
   useEffect(()=>{
     axios.get(`${apiUrl}/resume`).then((res)=>{
       setResume(res.data);
@@ -28,6 +29,7 @@ const About = () => {
       .get(`${apiUrl}/about`)
       .then((res) => {
         setAbout(res.data);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
@@ -69,10 +71,11 @@ const About = () => {
   return (
     <>
       <Nav />
-      <Container className="my-5 pt-3">
+      {
+        loading ? <Loader/> : <Container className="mt-5 pt-3">
         <Row>
           <Col md={5} sm={4} lg={5} className="col-12">
-            <div className="about-img over-flow-hidden d-block m-auto rounded-1 mt-5">
+            <div className="about-img over-flow-hidden d-block m-auto rounded-1">
               <img
                 src="images/ab-img.png"
                 className="img-fluid rounded d-block mx-auto inner-img mt-3"
@@ -93,6 +96,8 @@ const About = () => {
           </Col>
         </Row>
       </Container>
+      }
+      
       <Container>
         <div className="d-flex  align-items-center justify-content-center">
           <h2 className="fw-bold text-center skill-text my-3 shadow me-3">
