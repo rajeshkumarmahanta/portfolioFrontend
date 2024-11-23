@@ -10,7 +10,7 @@ const SingleBlog = () => {
     const[singleBlog,setSingleBlog] = useState({});
     const formattedDate = new Date(singleBlog.updatedAt).toDateString();
     useEffect(() => {
-        axios.get(`${apiUrl}/singleblog/${id}`).then((res) => {
+        axios.get(`${apiUrl}/blog/single/${id}`).then((res) => {
             setSingleBlog(res.data);
         }).catch((err) => {
           console.log(err)
